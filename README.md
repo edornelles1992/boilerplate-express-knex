@@ -10,13 +10,13 @@ Git: https://git-scm.com/ <br>
 Node.js: https://nodejs.org/en/ <br>
 MySQL: https://www.mysql.com/ <br>
 
-database: job_quest
-usuario: root
-senha: (sem senha)
+Database: job_quest  <br>
+usuario: root  <br>
+senha: (sem senha)  <br>
 
 ## Instalação
 ```
-git clone http://www.tools.ages.pucrs.br/job-quest/API/
+git clone https://tools.ages.pucrs.br/job-quest/API/
 cd API
 npm install
 npm start

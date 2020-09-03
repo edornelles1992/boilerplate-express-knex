@@ -3,26 +3,25 @@ const AuthManager = require('../Helpers/AuthManager')
 
 var jwt = require('jsonwebtoken')
 
-
 class LoginController {
-    static login(email, password, callback) {
-        AuthManager.ensureValidUser(email, password, (error, userData) => {
+    static login(email, senha, response) {
+        AuthManager.ensureValidUser(email, senha, (error, userData) => {
             if (error != null) {
-                return callback(error, null)
+                return response(error, null)
             }
             //Generate token
             let token = AuthManager.generateToken(userData)
-            return callback(null, { token: token, userData: userData })
+            return response(null, { token: token, userData: userData })
         })
     }
 
-    static validateToken(req, callback) {
+    static validateToken(req, response) {
         AuthManager.containsToken(req)
         jwt.verify(req.token, constants.APISecretKey, (error, data) => {
             if (error) {
-                callback(null, false)
+                response(constants.invalidSession, false)
             } else {
-                callback(null, true)
+                response(null, true)
             }
         })
     }

@@ -8,7 +8,7 @@ class Constants {
   static get successCode() {
     return 0;
   }
-  static get errorCodeMongoose() {
+  static get errorCodeDatabase() {
     return 1;
   }
   static get errorCodeAuth() {
@@ -27,9 +27,23 @@ class Constants {
     return 11000;
   }
 
+  // GENERAL CONSTANTS
+  static get minRandomNumber() {
+    return 100000000000;
+  }
+  static get maxRandomNumber() {
+    return 999999999999;
+  }
+  static get sessionTime() {
+    return "1h";
+  }
+
   // API DESCRIPTION CODES
   static get successDesc() {
     return "Sucesso";
+  }
+  static get genericErrorDesc() {
+    return "Erro Inesperado.";
   }
   static get notFoundDesc() {
     return "Registro não encontrado";
@@ -38,7 +52,7 @@ class Constants {
     return "Código informado inválido.";
   }
   static get authenticationFailed() {
-    return "Usuário ou senha inválidos";
+    return "E-mail ou senha inválidos";
   }
   static get invalidToken() {
     return "Token inválido";
@@ -66,6 +80,26 @@ class Constants {
   }
   static get emailAlreadyRegistered() {
     return "E-mail já cadastrado";
+  }
+  //EMAIL SENDER DATA
+  static get returnEmailSender() {
+    return "testeteste@gmail.com";
+  }
+
+  static get returnPasswordSender() {
+    return "123123123";
+  }
+
+  static get returnSMTPProvider() {
+    return "Gmail";
+  }
+
+  static get genericError() {
+    return { code: Constants.errorCodeDatabase, desc: Constants.genericErrorDesc }
+  }
+
+  static get invalidSession() {
+    return { code: Constants.errorCodeAuth , desc: Constants.invalidToken }
   }
 }
 

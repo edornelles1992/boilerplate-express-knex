@@ -5,7 +5,7 @@ const LoginController = require('../Controllers/LoginController')
 const routerLogin = express.Router()
 
 routerLogin.post('/', function (req, res) {
-    LoginController.login(req.body.email, req.body.password, (error, data) => {
+    LoginController.login(req.body.email, req.body.senha, (error, data) => {
         res.json(ResponseHelper.createResponse(error, data, res, false))
     })
 })

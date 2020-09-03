@@ -1,29 +1,68 @@
 const constants = require('../config/contants')
-// const DAO = require('../DAO/UsersDAO')
-const sha256 = require('sha256')
-const { login } = require('../Controllers/LoginController')
-const db = require ('../database');
+const DAO = require('../DAO/UsersDAO')
 
 class UserController {
 
-
-    static list(callback) {
-        db.select().from('usuario').then(function(data){
-            callback(null, data)
-        }).catch(e => {
+    static async list(response) {
+        try {
+            response(null, await DAO.list());
+        } catch (e) {
             console.log(e)
-            callback(e, null)
-        })
+            response(constants.genericError, e);
+        }
     }
 
-    static findUser(id, callback) {
-        db.select().from('usuario').where('id_usuario', id).then(function(data){
-            callback(null, data[0])
-        }).catch(e => {
+    static async findUser(id, response) {
+        try {
+            const data = await DAO.findUserById(id);
+            if (data) {
+                response(null, data)
+            } else {
+                response({ code: constants.invalidUser, desc: constants.notFoundDesc }, null);
+            }
+        } catch (e) {
             console.log(e)
-            callback(e, null)        
-        })
-    }    
+            response(constants.genericError, e);
+        }
+    }
+
+    static async addUser(newUser, response) {
+        try {
+            const data = await DAO.save(newUser)
+            response(null, { id_usuario: data[0] })
+        } catch (e) {
+            console.log(e)
+            response(constants.genericError, e)
+        }
+    }
+
+    static async updateUser(user, response) {
+        try {
+            const data = await DAO.update(user, response)
+            if (data) {
+                response(null, data)
+            } else {
+                response({ code: constants.invalidUser, desc: constants.notFoundDesc }, null);
+            }
+        } catch (e) {
+            console.log(e)
+            response(constants.genericError, e)
+        }
+    }
+
+    static async deleteUser(id, response) {
+        try {
+            const data = await DAO.delete(id)
+            if (data) {
+                response(null, data)
+            } else {
+                response({ code: constants.invalidUser, desc: constants.notFoundDesc }, null);
+            }
+        } catch (e) {
+            console.log(e)
+            response(constants.genericError, e)
+        }
+    }
 }
 
 module.exports = UserController

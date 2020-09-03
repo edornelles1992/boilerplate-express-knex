@@ -5,14 +5,16 @@ class ResponseHelper {
         let json = {}
         if (!error) {
             json = {
-                statusCode: constants.successCode,
-                statusDesc: constants.successDesc,
+                code: constants.successCode,
+                desc: constants.successDesc,
+                success: true,
                 data: data
             }
         } else {
             json = {
-                statusCode: error.statusCode,
-                statusDesc: error.statusDesc,
+                code: error.code,
+                desc: error.desc,
+                success: false,
                 data: data
             }
         }

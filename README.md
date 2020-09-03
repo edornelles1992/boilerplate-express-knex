@@ -25,9 +25,9 @@ npm start
 ## Scripts BD
 migrations e seeds estão inclusos no projeto, utilize:<br>
 
-npx knex migrate:latest - criar tabelas <br>
+npx knex migrate:latest - irá criar as tabelas tabelas <br>
 npx knex seed:run - inserts tabelas <br>
 
-O projeto também contem os scripts para rodar manualmente, caso necessário: <br>
-banco.sql
+O projeto também contem os scripts para rodar manualmente: <br>
+database/banco.sql
 

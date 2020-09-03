@@ -26,8 +26,8 @@ npm start
 ```
 migrations e seeds estão inclusos no projeto, utilize:
 
-npx knex migrate:latest -> irá criar as tabelas tabelas
-npx knex seed:run -> inserts tabelas
+npx knex migrate:latest -> irá gerar as tabelas
+npx knex seed:run -> rodar os inserts tabelas
 
 O projeto também contem os scripts para rodar manualmente:
 database/banco.sql

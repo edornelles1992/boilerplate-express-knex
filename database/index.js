@@ -5,6 +5,9 @@ var knex = require('knex')({
       user : 'root',
       password : '',
       database : 'job_quest'
+    },
+    migrations: {
+      tableName: 'migrations'
     }
   });
 

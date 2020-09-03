@@ -14,7 +14,7 @@ class AuthManager {
         if (AuthManager.containsToken(req)) {
             jwt.verify(req.token, constants.APISecretKey, function (err, data) {
                 if (err) {
-                    let error = { statusDesc: constants.invalidToken, statusCode: constants.errorCodeAuth }
+                    let error = { desc: constants.invalidToken, code: constants.errorCodeAuth }
                     res.json(ResponseHelper.createResponse(error, null))
                 } else {
                     req.User = data
@@ -22,7 +22,7 @@ class AuthManager {
                 }
             })
         } else {
-            let error = { statusDesc: constants.tokenNotFound, statusCode: constants.errorCodeAuth }
+            let error = { desc: constants.tokenNotFound, code: constants.errorCodeAuth }
             res.json(ResponseHelper.createResponse(error, null))
         }
     }

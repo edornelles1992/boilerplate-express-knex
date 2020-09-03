@@ -16,9 +16,7 @@ function setupServer() {
     app.use(cors())
     app.use(bodyParser.json())
     app.use('/api/login', loginRouter)
-    app.use('/api/users', usersRouter)
-    // app.use('/api/auth_user', TokenManager.ensureUserToken, routerAuthUser)
-    
+    app.use('/api/users', TokenManager.ensureUserToken, usersRouter)
     app.listen(config.app.port, function () {
         console.log(`Server listening on port ${config.app.port}`)
     })

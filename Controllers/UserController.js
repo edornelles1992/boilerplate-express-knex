@@ -38,7 +38,7 @@ class UserController {
 
     static async updateUser(user, response) {
         try {
-            const data = await DAO.update(user, response)
+            const data = await DAO.update({...user, updated_at: new Date()}, response)
             if (data) {
                 response(null, data)
             } else {

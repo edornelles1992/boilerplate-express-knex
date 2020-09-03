@@ -19,6 +19,7 @@
     "instagram-node": "^0.5.8",
     "jsonwebtoken": "^8.2.1",
     "knex": "^0.21.5",
+    "knex-migrate": "^1.7.4",
     "morgan": "^1.9.1",
     "multer": "^1.4.2",
     "multiparty": "^4.2.1",

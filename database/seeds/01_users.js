@@ -1,4 +1,4 @@
-exports.seed = function (knex) {
+module.exports = function insertsTable(knex) {
   // Deletes ALL existing entries
   return knex('usuario')
     .del()

@@ -1,5 +1,5 @@
 
-exports.up = function(knex) {
+module.exports = function createTables(knex) {
     return knex.schema
     .createTable('usuario', function(table) {
         table.increments('id_usuario').primary()
@@ -10,8 +10,4 @@ exports.up = function(knex) {
         table.timestamp('created_at').defaultTo(knex.fn.now())
         table.timestamp('updated_at').defaultTo(knex.fn.now())
     })
-};
-
-exports.down = function(knex) {
-    return knex.schema.dropTable('usuario')
 };

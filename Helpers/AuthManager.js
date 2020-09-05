@@ -34,7 +34,6 @@ class AuthManager {
     static async ensureValidUser(email, senha, response) {
         try {
             const user = await DAO.findUserByEmailAndPassword(email, senha)
-            console.log(user)
             if (!!user && (user.senha === senha))
                 response(null, { ...user, senha: null })
             else

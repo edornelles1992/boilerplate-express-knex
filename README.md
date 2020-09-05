@@ -23,7 +23,7 @@ git checkout dev
 npm install
 npm start
 
-OBS: Antes de rodar a API tenha o banco de dados MySQL rodando na no seu ambiente local.
+OBS: Antes de rodar a API tenha o banco de dados MySQL rodando no seu ambiente local.
 ```
 
 ## Scripts BD

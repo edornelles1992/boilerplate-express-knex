@@ -13,7 +13,7 @@ setupServer()
 function setupServer() {
     const app = express()
 
-    app.use(cors())
+    app.use(cors({origin: '*'}))
     app.use(bodyParser.json())
     app.use('/api/login', loginRouter)
     app.use('/api/users', TokenManager.ensureUserToken, usersRouter)

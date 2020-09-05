@@ -18,8 +18,8 @@ senha: (sem senha)  <br>
 ## Instalação
 ```
 git clone https://tools.ages.pucrs.br/job-quest/api
-git checkout dev
 cd API
+git checkout dev
 npm install
 npm start
 

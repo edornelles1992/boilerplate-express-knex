@@ -1,10 +1,9 @@
 const express    = require('express')
 const bodyParser = require('body-parser')
 const cors       = require('cors')
-
 const loginRouter = require('./routes/login')
 const usersRouter = require('./routes/users')
-
+const buildBanner = require('./Helpers/Banner')
 const TokenManager = require('./Helpers/AuthManager')
 var config = require('./config/config')
 
@@ -15,9 +14,7 @@ function setupServer() {
 
     app.use(cors({origin: '*'}))
     app.use(bodyParser.json())
-    app.use('/api/login', loginRouter)
-    app.use('/api/users', TokenManager.ensureUserToken, usersRouter)
-    app.listen(config.app.port, function () {
-        console.log(`Server listening on port ${config.app.port}`)
-    })
+    app.use('/api/login', loginRouter) //rotas de login -> públicas
+    app.use('/api/users', TokenManager.ensureUserToken, usersRouter) // TokenManager.ensureUserToken -> rota protegida por autenticação
+    app.listen(config.app.port, buildBanner(config.app.port))
 }
